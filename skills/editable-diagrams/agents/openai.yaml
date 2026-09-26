@@ -1,0 +1,4 @@
+interface:
+  display_name: "Editable Diagrams"
+  short_description: "Turn visual concepts into editable, slide-ready diagrams"
+  default_prompt: "Use $editable-diagrams to generate a visual concept, rebuild it as a named HTML/SVG diagram, and inspect the rendered exports."

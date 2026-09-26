@@ -1,0 +1,56 @@
+{
+  "title": "From visual concept to editable diagram",
+  "show_title": false,
+  "background": "transparent",
+  "card_width": 320,
+  "gap": 110,
+  "decisions": [
+    "Transparent exterior; white card interiors.",
+    "Straight arrows with labels inside real gutters.",
+    "Keep stable element IDs during conversational edits."
+  ],
+  "nodes": [
+    {
+      "id": "visual-concept",
+      "label": "Visual concept",
+      "color": "#2563eb",
+      "items": [
+        "Generate an image or use a reference",
+        "Confirm wording and connections"
+      ]
+    },
+    {
+      "id": "editable-artwork",
+      "label": "Editable artwork",
+      "color": "#13834b",
+      "items": [
+        "Rebuild with named SVG elements",
+        "Calculate spacing and arrow anchors"
+      ]
+    },
+    {
+      "id": "inspect-and-refine",
+      "label": "Inspect and refine",
+      "color": "#b56808",
+      "items": [
+        "Inspect the rendered result",
+        "Refine through conversation",
+        "Export for slides"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "concept-to-artwork",
+      "label": "Rebuild",
+      "from": "visual-concept",
+      "to": "editable-artwork"
+    },
+    {
+      "id": "artwork-to-review",
+      "label": "Review",
+      "from": "editable-artwork",
+      "to": "inspect-and-refine"
+    }
+  ]
+}

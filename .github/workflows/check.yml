@@ -1,0 +1,20 @@
+name: Check skills
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 -m unittest discover -s tests -v
+      - name: Check browser export JavaScript syntax
+        run: |
+          python3 -c "from pathlib import Path; s=Path('skills/editable-diagrams/assets/viewer.html').read_text(); Path('/tmp/diagram-export.js').write_text(s.split('<script>')[1].split('</script>')[0])"
+          node --check /tmp/diagram-export.js

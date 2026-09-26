@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@@TITLE@@</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; color: #182338; background: #eef1f5; font-family: Arial, sans-serif; }
+main { max-width: 1500px; margin: auto; }
+.preview { overflow: auto; padding: 20px; border: 1px solid #cbd5e1; border-radius: 12px; background-color: white; background-image: conic-gradient(#e8ebef 25%,transparent 0 50%,#e8ebef 0 75%,transparent 0); background-size: 20px 20px; }
+.preview svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; align-items: center; }
+button { font: 600 14px Arial,sans-serif; color: #182338; background: white; border: 1px solid #94a3b8; padding: 10px 16px; border-radius: 7px; cursor: pointer; }
+button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
+button:disabled { opacity: .5; cursor: wait; }
+p { font-size: 14px; line-height: 1.5; }
+@media print { body { padding: 0; background: transparent; } .actions,p { display: none; } .preview { padding: 0; border: 0; background: none; overflow: visible; } .preview svg { min-width: 0; } }
+</style>
+</head>
+<body><main>
+<div class="preview" aria-label="Diagram preview">@@SVG@@</div>
+<div class="actions"><button id="download-svg">Download SVG</button><button id="download-png">Download PNG · 4096px wide</button></div>
+<p id="status" role="status" aria-live="polite">The checkerboard indicates transparency and is excluded from exports.</p>
+</main>
+<script>
+const graphic = document.querySelector('.preview svg');
+const status = document.getElementById('status');
+function svgBlob() {
+  return new Blob([new XMLSerializer().serializeToString(graphic)], {type: 'image/svg+xml;charset=utf-8'});
+}
+function download(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url; link.download = filename;
+  document.body.appendChild(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+}
+document.getElementById('download-svg').addEventListener('click', () => download(svgBlob(), 'diagram.svg'));
+document.getElementById('download-png').addEventListener('click', async event => {
+  const button = event.currentTarget;
+  button.disabled = true; status.textContent = 'Preparing PNG…';
+  const url = URL.createObjectURL(svgBlob());
+  try {
+    await document.fonts.ready;
+    const img = new Image();
+    await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; img.src = url; });
+    const box = graphic.viewBox.baseVal;
+    const canvas = document.createElement('canvas');
+    canvas.width = 4096; canvas.height = Math.round(4096 * box.height / box.width);
+    canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    if (!blob) throw new Error('PNG encoding failed');
+    download(blob, 'diagram.png'); status.textContent = 'PNG downloaded. The preview checkerboard is excluded.';
+  } catch (error) {
+    status.textContent = 'PNG export failed. Download the SVG instead. ' + error.message;
+  } finally { URL.revokeObjectURL(url); button.disabled = false; }
+});
+</script>
+</body>
+</html>

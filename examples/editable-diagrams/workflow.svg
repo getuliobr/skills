@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="diagram" width="1244" height="302" viewBox="0 0 1244 302" role="img" aria-labelledby="diagram-title diagram-description" font-family="Arial, Helvetica, sans-serif">
+<title id="diagram-title">From visual concept to editable diagram</title>
+<desc id="diagram-description">Editable horizontal process diagram. Named groups identify stages and connections.</desc>
+<metadata id="diagram-decisions">[&quot;Transparent exterior; white card interiors.&quot;, &quot;Straight arrows with labels inside real gutters.&quot;, &quot;Keep stable element IDs during conversational edits.&quot;]</metadata>
+<g id="visual-concept" data-label="Visual concept" transform="translate(32 32)">
+<rect width="320" height="238" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+<path d="M20 14 H300" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+<text data-part="heading" x="22" y="48" fill="#2563eb" font-size="20" font-weight="700">Visual concept</text>
+<circle cx="25" cy="85" r="2.5" fill="#2563eb"/>
+<text data-part="body" x="38" y="90" fill="#40516a" font-size="16">Generate an image or</text>
+<text data-part="body" x="38" y="113" fill="#40516a" font-size="16">use a reference</text>
+<circle cx="25" cy="143" r="2.5" fill="#2563eb"/>
+<text data-part="body" x="38" y="148" fill="#40516a" font-size="16">Confirm wording and</text>
+<text data-part="body" x="38" y="171" fill="#40516a" font-size="16">connections</text>
+</g>
+<g id="editable-artwork" data-label="Editable artwork" transform="translate(462 32)">
+<rect width="320" height="238" rx="14" fill="#ffffff" stroke="#13834b" stroke-width="1.5"/>
+<path d="M20 14 H300" fill="none" stroke="#13834b" stroke-width="4" stroke-linecap="round"/>
+<text data-part="heading" x="22" y="48" fill="#13834b" font-size="20" font-weight="700">Editable artwork</text>
+<circle cx="25" cy="85" r="2.5" fill="#13834b"/>
+<text data-part="body" x="38" y="90" fill="#40516a" font-size="16">Rebuild with named SVG</text>
+<text data-part="body" x="38" y="113" fill="#40516a" font-size="16">elements</text>
+<circle cx="25" cy="143" r="2.5" fill="#13834b"/>
+<text data-part="body" x="38" y="148" fill="#40516a" font-size="16">Calculate spacing and</text>
+<text data-part="body" x="38" y="171" fill="#40516a" font-size="16">arrow anchors</text>
+</g>
+<g id="inspect-and-refine" data-label="Inspect and refine" transform="translate(892 32)">
+<rect width="320" height="238" rx="14" fill="#ffffff" stroke="#b56808" stroke-width="1.5"/>
+<path d="M20 14 H300" fill="none" stroke="#b56808" stroke-width="4" stroke-linecap="round"/>
+<text data-part="heading" x="22" y="48" fill="#b56808" font-size="20" font-weight="700">Inspect and refine</text>
+<circle cx="25" cy="85" r="2.5" fill="#b56808"/>
+<text data-part="body" x="38" y="90" fill="#40516a" font-size="16">Inspect the rendered</text>
+<text data-part="body" x="38" y="113" fill="#40516a" font-size="16">result</text>
+<circle cx="25" cy="143" r="2.5" fill="#b56808"/>
+<text data-part="body" x="38" y="148" fill="#40516a" font-size="16">Refine through</text>
+<text data-part="body" x="38" y="171" fill="#40516a" font-size="16">conversation</text>
+<circle cx="25" cy="201" r="2.5" fill="#b56808"/>
+<text data-part="body" x="38" y="206" fill="#40516a" font-size="16">Export for slides</text>
+</g>
+<g id="concept-to-artwork" data-label="Rebuild" data-from="visual-concept" data-to="editable-artwork" fill="#2563eb">
+<path data-part="shaft" d="M360 151 H444" fill="none" stroke="#2563eb" stroke-width="3"/>
+<path data-part="arrowhead" d="M454 151 l-12 -7 v14 Z"/>
+<text data-part="label" x="407" y="181" text-anchor="middle" font-size="15" font-weight="700">Rebuild</text>
+</g>
+<g id="artwork-to-review" data-label="Review" data-from="editable-artwork" data-to="inspect-and-refine" fill="#13834b">
+<path data-part="shaft" d="M790 151 H874" fill="none" stroke="#13834b" stroke-width="3"/>
+<path data-part="arrowhead" d="M884 151 l-12 -7 v14 Z"/>
+<text data-part="label" x="837" y="181" text-anchor="middle" font-size="15" font-weight="700">Review</text>
+</g>
+</svg>
