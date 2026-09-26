@@ -62,3 +62,7 @@ python3 -m unittest discover -s tests -v
 Tests cover geometry after edits, long labels, text escaping, stable IDs, transparency, invalid connections, and reproducible examples. GitHub Actions runs them on pushes and pull requests. Visual inspection is a separate required part of the skill workflow; these tests do not replace it.
 
 Add future skills under `skills/<skill-name>/` with a `SKILL.md` and only the supporting files they need. Keep examples and repository tests outside installable skill folders.
+
+## License
+
+This repository is licensed under the [MIT License](LICENSE).
